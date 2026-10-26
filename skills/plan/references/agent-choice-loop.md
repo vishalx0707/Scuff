@@ -31,19 +31,19 @@ Start `node server.mjs` in the background if it is not already running, then ope
 
 ## Connecting clients
 
-`agent-mcp.mjs` is a local stdio MCP server. Published installs can use `npx --yes @vishalx0707/scuff mcp`; configure command `npx` with args `["--yes", "@vishalx0707/scuff", "mcp"]`. On Windows, use `npx.cmd` if the host cannot resolve `npx`. `mcp-config.example.json` contains the portable npm configuration.
+`agent-mcp.mjs` is a local stdio MCP server. Published installs can use `npx --yes scuff-plugin mcp`; configure command `npx` with args `["--yes", "scuff-plugin", "mcp"]`. On Windows, use `npx.cmd` if the host cannot resolve `npx`. `mcp-config.example.json` contains the portable npm configuration.
 
 For Codex, the equivalent TOML entry is:
 
 ```toml
 [mcp_servers.scuff]
 command = "npx"
-args = ["--yes", "@vishalx0707/scuff", "mcp"]
+args = ["--yes", "scuff-plugin", "mcp"]
 ```
 
 Cursor and Claude Code can use the same `mcpServers` JSON. Source installs can still use `node` and the absolute path to `agent-mcp.mjs`. The package's `.mcp.json` supports the plugin loader's root-path variable; it does not invoke another model during development. No global client configuration is changed by this package.
 
-The adapter uses an existing local HTTP server or starts one without opening a window. `SCUFF_URL` (or legacy `FIELDWORK_URL`) defaults to `http://127.0.0.1:8787`; `FIELDWORK_AUTOSTART=0` disables server startup. `SCUFF_DATA_DIR` overrides the stable per-user data directory. All agents on the same local workspace must use the same store. CLI fallbacks can replace `node choices.mjs` with `npx --yes @vishalx0707/scuff choices`, and similarly for `jobs` and `compile`.
+The adapter uses an existing local HTTP server or starts one without opening a window. `SCUFF_URL` (or legacy `FIELDWORK_URL`) defaults to `http://127.0.0.1:8787`; `FIELDWORK_AUTOSTART=0` disables server startup. `SCUFF_DATA_DIR` overrides the stable per-user data directory. All agents on the same local workspace must use the same store. CLI fallbacks can replace `node choices.mjs` with `npx --yes scuff-plugin choices`, and similarly for `jobs` and `compile`.
 
 Clients need Node20+ and access to the same computer/store. A remote/cloud agent cannot reach the user's `127.0.0.1` without an explicit host connection; do not promise remote access or publish the local server as a workaround.
 

@@ -1,5 +1,5 @@
 {
-  "name": "@vishalx0707/scuff",
+  "name": "scuff-plugin",
   "version": "0.4.0",
   "type": "module",
   "description": "Visual creative direction for Blender, images and video, with a local agent choice loop.",

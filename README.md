@@ -11,10 +11,10 @@ Requires Node.js 20 or newer. The app has no runtime dependencies or API keys.
 Run the public npm package:
 
 ```sh
-npx --yes @vishalx0707/scuff
+npx --yes scuff-plugin
 ```
 
-Then open **http://127.0.0.1:8787**. Scuff starts only its local server and never opens a browser window automatically. Keep the command running while using the site. The unscoped npm name `scuff` belongs to another project; use the full `@vishalx0707/scuff` name.
+Then open **http://127.0.0.1:8787**. Scuff starts only its local server and never opens a browser window automatically. Keep the command running while using the site. The unscoped npm name `scuff` belongs to another project; use `scuff-plugin` for this project.
 
 For an agent, add this MCP configuration to its settings:
 
@@ -23,7 +23,7 @@ For an agent, add this MCP configuration to its settings:
   "mcpServers": {
     "scuff": {
       "command": "npx",
-      "args": ["--yes", "@vishalx0707/scuff", "mcp"]
+      "args": ["--yes", "scuff-plugin", "mcp"]
     }
   }
 }
@@ -78,7 +78,7 @@ See [queued execution](skills/direct/references/queued-execution.md) for the exa
 
 ## Data and evidence
 
-Directions/styles stay in this browser's local storage until exported. Export browser work before clearing storage. Uploaded references, choices, queued directions and registered result files use stable per-user storage: `%LOCALAPPDATA%/Scuff` on Windows, `~/Library/Application Support/Scuff` on macOS, or `$XDG_DATA_HOME/scuff` (default `~/.local/share/scuff`) on Linux. They stay outside npm's installation/cache, so updates do not remove them. Run `npx --yes @vishalx0707/scuff data` to see the folder.
+Directions/styles stay in this browser's local storage until exported. Export browser work before clearing storage. Uploaded references, choices, queued directions and registered result files use stable per-user storage: `%LOCALAPPDATA%/Scuff` on Windows, `~/Library/Application Support/Scuff` on macOS, or `$XDG_DATA_HOME/scuff` (default `~/.local/share/scuff`) on Linux. They stay outside npm's installation/cache, so updates do not remove them. Run `npx --yes scuff-plugin data` to see the folder.
 
 Set `SCUFF_DATA_DIR` or pass `--store <folder>` to use another location; `FIELDWORK_STORE` remains supported. Existing source checkouts with populated `.fieldwork-local` stores continue using that folder until explicitly moved. Never include either store in shared packages.
 
