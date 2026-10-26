@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "fieldwork": {
+      "command": "node",
+      "args": [
+        "<absolute-path-to-scuff>/agent-mcp.mjs"
+      ],
+      "env": {
+        "FIELDWORK_URL": "http://127.0.0.1:8787"
+      }
+    }
+  }
+}

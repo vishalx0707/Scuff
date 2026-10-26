@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "fieldwork": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/agent-mcp.mjs"],
+      "env": {"FIELDWORK_URL": "http://127.0.0.1:8787"}
+    }
+  }
+}

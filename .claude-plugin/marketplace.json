@@ -1,0 +1,14 @@
+{
+  "name": "scuff-local",
+  "description": "Local creative direction for Blender, images and video.",
+  "owner": {
+    "name": "Vishal"
+  },
+  "plugins": [
+    {
+      "name": "scuff",
+      "source": "./",
+      "description": "Visual choices and inspected creative execution through your connected agent."
+    }
+  ]
+}

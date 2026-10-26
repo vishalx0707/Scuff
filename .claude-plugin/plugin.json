@@ -1,0 +1,9 @@
+{
+  "name": "scuff",
+  "version": "0.3.1",
+  "author": {
+    "name": "Vishal"
+  },
+  "description": "Creative direction for Blender, AI image generation and AI video generation, with context-aware briefs, camera and motion planning, nature tools and visual review.",
+  "homepage": "https://github.com/vishalx0707/Scuff"
+}
