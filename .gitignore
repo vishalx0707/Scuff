@@ -1,0 +1,35 @@
+# Local creative work and private session data
+/.fieldwork-local/
+/mcp-config.local.json
+/research/
+/relocation-checks/
+/relocate-project.py
+/relocation-manifest.json
+/PROJECT.md
+
+# Generated verification output
+/test-results/
+/playwright-report/
+/coverage/
+/docs/*-results.json
+/docs/research-evidence.json
+/docs/preview.png
+/docs/mobile.png
+
+# Fonts retained for local reference only; the public app uses OFL Commissioner.
+/dist/assets/Satoshi-*.woff2
+
+# Dependency caches, credentials and editor state
+node_modules/
+__pycache__/
+*.py[cod]
+*.log
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
