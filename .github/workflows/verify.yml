@@ -7,8 +7,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-24.04, windows-latest]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -21,10 +22,8 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run test:python
-      - run: npx playwright install --with-deps chromium
-        if: runner.os == 'Linux'
       - run: npx playwright install chromium
-        if: runner.os == 'Windows'
+        timeout-minutes: 5
       - run: npm run test:browser
       - uses: actions/upload-artifact@v7
         if: failure()
