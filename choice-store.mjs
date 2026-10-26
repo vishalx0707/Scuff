@@ -1,15 +1,15 @@
-import {mkdir,readFile,writeFile,rename,open,unlink} from 'node:fs/promises';
+import {mkdir,readFile,open,unlink} from 'node:fs/promises';
 import {randomUUID} from 'node:crypto';
 import path from 'node:path';
 import {setTimeout as delay} from 'node:timers/promises';
 import {createJobStore,defaultStoreRoot} from './job-store.mjs';
 import {normalize,compilePrompt,compileGeneratorPrompt} from './dist/core.mjs';
+import {saveJSON as save} from './atomic-json.mjs';
 
 const bad=(message,status=400)=>Object.assign(new Error(message),{status});
 const idPattern=/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 const revision=value=>Number.isSafeInteger(value)&&value>=0;
 async function load(file){try{return JSON.parse(await readFile(file,'utf8'));}catch(error){if(error.code==='ENOENT')throw bad('Choice session was not found.',404);throw error;}}
-async function save(file,data){const temp=file+'.'+randomUUID()+'.tmp';await writeFile(temp,JSON.stringify(data,null,2),'utf8');try{await rename(temp,file);}catch(error){await unlink(temp).catch(()=>{});throw error;}}
 function result(session){
   const terminal=session.status!=='choosing';
   return {...session,...(session.status==='ignored'?{direction:null,agentBrief:null,generatorPrompt:null,referenceAssets:[]}:{}),preview:!terminal,authoritative:session.status==='done',approved:session.status==='done',url:`/?choice=${session.id}#direction`,notice:session.status==='choosing'?'Draft choices only. Wait for Done or Ignore; a timeout is not approval.':session.status==='done'?'The user submitted these choices. This confirms the direction, not permission for unrelated actions.':'The user ignored this choice request. Do not apply its draft choices.'};

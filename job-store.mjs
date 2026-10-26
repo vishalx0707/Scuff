@@ -1,9 +1,10 @@
-import {mkdir,readFile,writeFile,rename,open,unlink,readdir,stat,copyFile,realpath} from 'node:fs/promises';
+import {mkdir,readFile,writeFile,open,unlink,readdir,stat,copyFile,realpath} from 'node:fs/promises';
 import {createReadStream} from 'node:fs';
 import {createHash,randomUUID} from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import * as core from './dist/core.mjs';
+import {saveJSON as save} from './atomic-json.mjs';
 
 export const defaultStoreRoot=fileURLToPath(new URL('./.fieldwork-local/',import.meta.url));
 const roles=new Set(['identity','composition','atmosphere','style','audio']);
@@ -24,7 +25,6 @@ function signature(buffer,mime){
 }
 async function hashFile(file){const hash=createHash('sha256');for await(const chunk of createReadStream(file))hash.update(chunk);return hash.digest('hex');}
 async function json(file){try{return JSON.parse(await readFile(file,'utf8'));}catch(error){if(error.code==='ENOENT')throw fail('Local item was not found.',404);throw error;}}
-async function save(file,value){const temp=file+'.'+randomUUID()+'.tmp';await writeFile(temp,JSON.stringify(value,null,2),'utf8');try{await rename(temp,file);}catch(error){await unlink(temp).catch(()=>{});throw error;}}
 function publicRef(ref){const {path:localPath,...meta}=ref;return meta;}
 
 export function createJobStore(root=defaultStoreRoot){
@@ -90,6 +90,15 @@ export function createJobStore(root=defaultStoreRoot){
     try{for(const artifact of prepared){copied.push(artifact.path);await copyFile(artifact.sourcePath,artifact.path);if(await hashFile(artifact.path)!==artifact.sha256)throw fail('Output copy verification failed.',409);}const now=new Date().toISOString();job.status='completed';job.updatedAt=now;job.artifacts=prepared;job.inspection=receipt.inspection.trim();job.referenceEvidence=receipt.referenceEvidence||[];job.limitations=Array.isArray(receipt.limitations)?receipt.limitations.filter(x=>typeof x==='string').slice(0,20).map(x=>x.slice(0,2000)):[];job.execution.completedAt=now;await save(file,job);return job;}catch(error){await Promise.all(copied.map(output=>unlink(output).catch(()=>{})));throw error;}
   });}
   async function failJob(id,message){return withRunningJob(id,async(job,file)=>{if(typeof message!=='string'||!message.trim()||message.length>6000)throw fail('Describe why this execution could not complete.');job.status='failed';job.error=message.trim();job.updatedAt=new Date().toISOString();await save(file,job);return job;});}
-  async function getArtifact(jobId,artifactId){validId(artifactId);const job=await getJob(jobId),artifact=job.artifacts.find(item=>item.id===artifactId);if(!artifact)throw fail('Output was not found.',404);const actual=await realpath(artifact.path).catch(()=>null);if(!actual||!actual.startsWith(artifactsDir+path.sep))throw fail('Output is unavailable.',404);if(await hashFile(actual)!==artifact.sha256)throw fail('Output changed after verification.',409);return artifact;}
+  async function getArtifact(jobId,artifactId){
+    validId(artifactId);const job=await getJob(jobId),artifact=job.artifacts.find(item=>item.id===artifactId);
+    if(!artifact)throw fail('Output was not found.',404);
+    // Resolve both sides: Windows short names and junctions can identify the
+    // same directory using different strings. Still reject symlink escapes.
+    const actual=await realpath(artifact.path).catch(()=>null),boundary=await realpath(artifactsDir).catch(()=>null);
+    const relative=actual&&boundary?path.relative(boundary,actual):null;
+    if(!relative||relative==='..'||relative.startsWith('..'+path.sep)||path.isAbsolute(relative))throw fail('Output is unavailable.',404);
+    if(await hashFile(actual)!==artifact.sha256)throw fail('Output changed after verification.',409);return artifact;
+  }
   return {root,uploadReference,listReferences,getReference,createJob,getJob,listJobs,claimJob,completeJob,failJob,getArtifact};
 }

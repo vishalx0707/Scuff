@@ -4,7 +4,7 @@ Checked 26 October 2026 before publication. Browser work stayed headless. No ext
 
 | Boundary | Result | Coverage |
 | --- | --- | --- |
-| Compiler, local server and stdio MCP | 59 Node tests passed | Effective camera/CTLT semantics, strict import/export, literal user data, actual reference bytes, result artifacts, exclusive job claims, session revisions, Done/Ignore and malformed MCP requests |
+| Compiler, local server and stdio MCP | 60 Node tests passed | Effective camera/CTLT semantics, strict import/export, literal user data, actual reference bytes, canonical artifact containment, exclusive job claims, session revisions, Done/Ignore and malformed MCP requests |
 | Blender helper without Blender | 4 Python tests passed | Seed determinism, instance budgets, masks/exclusions and invalid requests |
 | Workspace in Chromium | 121 checks passed | Navigation, choices, example image loading, prompts, saved directions/styles, references, queue/result UI and responsive layout; no runtime errors or external requests |
 | Isolated choice UI | 31 checks passed | Agent seed, autosave, final-keystroke page Done, Ignore, conflicts, manual prompts, recovery and mobile controls |
@@ -20,6 +20,8 @@ Run `npm test`, `npm run test:python` and `npm run test:browser`. Optional brows
 - MCP test and screenshot paths use `fileURLToPath`, preserving spaces and Windows drive letters.
 - Browser suites use project-relative imports and isolated outputs, with a pinned optional Playwright dependency and lockfile.
 - Blender render output paths are resolved before use, preventing relative diagnostic renders escaping to the drive root.
+- Artifact containment resolves both the store and output paths, accepting Windows short names and store junctions while refusing files outside the store. Encoded backslashes are rejected consistently on Windows and Linux.
+- Atomic JSON replacement retries brief Windows file-lock errors without deleting the previous saved state.
 - Public source excludes private stores, personal machine paths, videos, chat logs, migration records and obsolete previews. Commissioner includes its open font license; Satoshi binaries remain local.
 
 ## Limits

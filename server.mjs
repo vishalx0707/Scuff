@@ -69,7 +69,9 @@ export function createServer({storeRoot}={}){const store=createJobStore(storeRoo
       throw bad('Local API route or method was not found.',404);
     }
     if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{'Allow':'GET, HEAD'}).end();return;}
-    const decoded=decodeURIComponent(url.pathname),file=path.resolve(root,'.'+(decoded==='/'?'/index.html':decoded));
+    const decoded=decodeURIComponent(url.pathname);
+    if(decoded.includes('\\'))throw bad('Forbidden.',403);
+    const file=path.resolve(root,'.'+(decoded==='/'?'/index.html':decoded));
     if(!file.startsWith(root+path.sep)&&file!==path.join(root,'index.html'))throw bad('Forbidden.',403);
     await sendFile(req,res,file);
   }catch(error){if(res.destroyed)return;const status=error.status||(error.code==='ENOENT'?404:400);if(res.headersSent){res.destroy();return;}json(res,status,{error:error.code==='ENOENT'?'Not found.':error.message||'Invalid request.'},req.method==='HEAD');}

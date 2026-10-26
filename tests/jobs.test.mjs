@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtemp,writeFile,readFile,rm} from 'node:fs/promises';
+import {mkdtemp,mkdir,symlink,writeFile,readFile,rm} from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
@@ -11,6 +11,20 @@ import {normalize,compilePrompt,compileGeneratorPrompt} from '../dist/core.mjs';
 const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aWu0AAAAASUVORK5CYII=','base64');
 const state={schemaVersion:1,medium:'image',subject:'One stone beside grass',chosenGroups:[]};
 async function temporary(t){const folder=await mkdtemp(path.join(os.tmpdir(),'fieldwork-handoff-'));t.after(async()=>{if(!path.resolve(folder).startsWith(path.resolve(os.tmpdir())+path.sep+'fieldwork-handoff-'))throw new Error('Unsafe test cleanup path.');await rm(folder,{recursive:true,force:true});});return folder;}
+
+test('artifact containment accepts canonical store aliases while rejecting escapes',async t=>{
+  const folder=await temporary(t),real=path.join(folder,'actual-store'),alias=path.join(folder,'store-alias');
+  await mkdir(real);await symlink(real,alias,process.platform==='win32'?'junction':'dir');
+  const store=createJobStore(alias),job=await store.createJob(state),output=path.join(folder,'output.png');
+  await writeFile(output,png);await store.claimJob(job.id,'alias-test');
+  const completed=await store.completeJob(job.id,{inspection:'Inspected the actual diagnostic image file.',artifacts:[{path:output,inspected:true}]});
+  const artifact=await store.getArtifact(job.id,completed.artifacts[0].id);
+  assert.deepEqual(await readFile(artifact.path),png);
+  // An outside file with the correct bytes is still outside the registered store.
+  completed.artifacts[0].path=output;
+  await writeFile(path.join(real,'jobs',job.id+'.json'),JSON.stringify(completed));
+  await assert.rejects(store.getArtifact(job.id,artifact.id),/Output is unavailable/);
+});
 
 test('reference bytes survive a queued handoff and inspected results have registered immutable copies',async t=>{
   const folder=await temporary(t),store=createJobStore(path.join(folder,'store'));
