@@ -12,6 +12,7 @@ async (page) => {
   assert(await page.locator('.world-grid .choice').count()===6,'Six creative-language options remain available');
   assert(await page.locator('#world .example-preview').count()===1&&await page.locator('#world .choice img,#world .choice svg').count()===0,'Language options share one selected example instead of separate schematic cards');
   await page.locator('#world .example-image').waitFor({state:'visible'});
+  await page.waitForFunction(()=>{const image=document.querySelector('#world .example-image');return image?.complete&&image.naturalWidth>0;});
   assert(await page.locator('#world .example-image').evaluate(i=>i.complete&&i.naturalWidth>0),'The selected language example is a loaded raster image');
   assert(!(await page.locator('.topbar').innerText()).includes('Fieldwork'),'Old small Fieldwork header removed');
   assert(await page.locator('.topbar button:visible').count()===1&&await page.locator('#menu-button').isVisible(),'One utility button replaces the separate save, looks, files and More buttons');
@@ -125,9 +126,11 @@ async (page) => {
   const json=JSON.parse(await storedDownload(()=>page.locator('#export-button').click()));
   assert(json.journal.length===1&&json.paletteRoles.shadow==='#102030'&&json.judgments['world:tactile'].includes('contact folds')&&json.promptDraft.endsWith('MANUAL REVIEW NOTE'),'JSON download includes all extended state and edited prompt');
   await page.locator('#import-file').setInputFiles({name:'bad.json',mimeType:'application/json',buffer:Buffer.from('{"schemaVersion":1,"paletteRoles":{"accent":"bad"}}')});
+  await page.locator('#import-error').waitFor({state:'visible'});
   assert((await page.locator('#import-error').innerText()).includes('unchanged'),'Malformed import explains failure without losing current work');
   assert((await state()).name==='Held in tension','Malformed import leaves current direction intact');
   await page.locator('#import-file').setInputFiles({name:'direction.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(json))});
+  await page.locator('#menu-dialog').waitFor({state:'hidden'});
   assert((await state()).journal.length===1&&!await page.locator('#menu-dialog').isVisible(),'Extended JSON imports successfully and closes the menu');
   await page.locator('#menu-button').click();
   await page.locator('#reset-button').click();assert((await state()).subject==='','Start fresh clears the current direction');
