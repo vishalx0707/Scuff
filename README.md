@@ -2,6 +2,8 @@
 
 A local workspace and agent plugin for Blender, image generation and video generation. Start with the subject and Tone, choose visual decisions where useful, then hand actual references and resolved instructions to your connected agent.
 
+**npm package:** [scuff-plugin](https://www.npmjs.com/package/scuff-plugin)
+
 ![Scuff camera choices with a reference-based example](docs/images/workspace.png)
 
 ## Start locally
@@ -11,12 +13,18 @@ Requires Node.js 20 or newer. The app has no runtime dependencies or API keys.
 Run the public npm package:
 
 ```sh
-npx --yes scuff-plugin
+npx scuff-plugin
 ```
 
 Then open **http://127.0.0.1:8787**. Scuff starts only its local server and never opens a browser window automatically. Keep the command running while using the site. The unscoped npm name `scuff` belongs to another project; use `scuff-plugin` for this project.
 
-For an agent, add this MCP configuration to its settings:
+For an agent, the MCP launch command is:
+
+```sh
+npx --yes scuff-plugin mcp
+```
+
+Add this MCP configuration to the agent's settings. `--yes` lets the agent launch without an interactive npm install prompt:
 
 ```json
 {
@@ -64,17 +72,17 @@ Saved **Directions** restore whole-project snapshots. **Styles** transfer select
 Read the root `SKILL.md`; it routes to plan, direct, references, shot, style and optional nature workflows. The site cannot read a chat or launch the agent. The agent needs its separately configured Blender MCP or image/video tool. Excluded collaborators must remain excluded.
 
 ```powershell
-node compile.mjs direction.json prompt.md
-node compile.mjs direction.json generator.md --generator
-node compile.mjs direction.json style.json --style
-node compile.mjs direction.json search-plan.md --references
-node jobs.mjs list
-node jobs.mjs claim <job-id> Codex
-node jobs.mjs complete <job-id> result-receipt.json
-node jobs.mjs fail <job-id> "Concrete limitation"
+npx --yes scuff-plugin compile direction.json prompt.md
+npx --yes scuff-plugin compile direction.json generator.md --generator
+npx --yes scuff-plugin compile direction.json style.json --style
+npx --yes scuff-plugin compile direction.json search-plan.md --references
+npx --yes scuff-plugin jobs list
+npx --yes scuff-plugin jobs claim <job-id> local-agent
+npx --yes scuff-plugin jobs complete <job-id> result-receipt.json
+npx --yes scuff-plugin jobs fail <job-id> "Concrete limitation"
 ```
 
-See [queued execution](skills/direct/references/queued-execution.md) for the exact receipt and [workflow notes](docs/WORKFLOW-0.3.md) for API behavior. The plugin is named `scuff`; `FIELDWORK_*` environment variables, the MCP example's `fieldwork` connection key, HTTP headers and local storage keys remain compatible with earlier local builds. No external collaborator is required to use the skills or CLI.
+See [queued execution](skills/direct/references/queued-execution.md) for the exact receipt and [workflow notes](docs/WORKFLOW-0.3.md) for API behavior. The product is Scuff and its npm package is `scuff-plugin`. Existing `FIELDWORK_*` environment variables, HTTP headers and browser storage keys remain supported. No external collaborator is required to use the skills or CLI.
 
 ## Data and evidence
 
