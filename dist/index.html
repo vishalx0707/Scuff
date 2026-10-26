@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Creative direction for Blender, image generation and video generation.">
+<title>Scuff — Creative direction</title>
+<link rel="preload" href="assets/commissioner-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/commissioner-medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css"><script type="module" src="app.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the choices</a>
+<header class="topbar"><a class="workspace-title" href="#direction">Creative direction</a><div class="header-actions"><span id="save-status" role="status">Saved on this computer</span></div></header>
+<aside class="sidebar" aria-label="Creative direction chapters"><nav id="chapters" aria-label="Chapters"></nav></aside>
+<main id="main" tabindex="-1"></main>
+<input id="import-file" type="file" accept=".json,application/json" hidden>
+<div id="toast" class="toast" role="status" hidden><span id="toast-text"></span><button id="undo-button" hidden>Undo</button><button id="dismiss-toast" aria-label="Dismiss notification" title="Dismiss notification">×</button></div>
+<noscript><p class="no-script">Enable JavaScript to use the local direction study.</p></noscript>
+</body></html>

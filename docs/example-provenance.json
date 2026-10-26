@@ -1,0 +1,333 @@
+{
+  "date": "2026-10-25",
+  "method": "Built-in image_gen edits using actual Pinterest reference image files",
+  "sections": 11,
+  "options": 57,
+  "scope": "One distinct reference scene per section; options reuse that section scene. Illustrations are not measured optical simulations or previews of the user subject.",
+  "entries": [
+    {
+      "group": "world",
+      "mode": "built-in image_gen edit",
+      "date": "2026-10-25",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/416301559310987717/",
+      "inputSHA256": "b9bed1ff4646a310a74cf4cb54836905fd272a6bb573adb709b7fdc02ae1c0c8",
+      "credit": "Jamie Hawkesworth Pays Homage to Joan Didion; domain-verified W Magazine Pinterest account links to the W Magazine article.",
+      "scene": "A winding path between golden coastal grass mounds.",
+      "prompt": "Use the supplied Pinterest photo as the ACTUAL EDIT TARGET, not merely inspiration. Produce ONE photographic comparison texture atlas: EXACT equal grid cells touching edge-to-edge with ZERO gutters, margins, borders, captions, numbers, text overlays or logos. Each cell is a complete LANDSCAPE 3:2 photographic view. High-quality material texture and authentic fine detail, maximum useful output resolution. The ORIGINAL PLACE and original objects must remain unmistakably recognizable in every cell. Keep unmentioned details fixed. Do not invent unrelated architecture, people or subject matter. AI illustration only, not evidence of measured optical properties. EXACT3columns2rows overallwide9:4aspect. Keep THIS winding dark path between dense tufted golden grass mounds under the pale blue sky, the same mound silhouettes, horizon and camera composition. Six creative-language treatments across this same reference place. Row1left DREAMY MINIMALISM: pale restrained light, soft gentle distance, quieter reduced palette and fine grass, subtle dreamlike stillness. Row1middle BRUTALIST POETRY: raw weighty masses of the existing grass mounds, decisive high-contrast raking light, mineral neutrals, strong path geometry; no new concrete buildings. Row1right CYBERPUNK AFTER HOURS: the same landscape at dark blue hour, restrained cyan/amber light accents grazing the existing grass and path, moody technological color language without adding structures/signs. Row2left PLAYFUL MAXIMALISM: richer layered grass colors and wildflower accents, expressive density yet recognizable path/mounds. Row2middle TACTILE SURREALISM: the same grass becomes exceptionally soft and velvety, rounded hand-worked tactile treatment, warm earthen colors, subtle not cartoonish. Row2right GRAPHIC COLOR POP: visually simple sculptural masses of the same mounds with a sharp cobalt/orange color relationship and precise authored shadows. Same landscape, not six unrelated scenes. Preserve reference-specific path shape and fine texture throughout.",
+      "outputPath": "dist/assets/examples/language-atlas.png",
+      "outputSHA256": "b3664f2cc34036416fb1ee6a45646579cd6a6d811c5597ebad55edf9235b0428",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024,
+        "cellWidth": 512,
+        "cellHeight": 512
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "note": "Reference-derived AI variation; not an optical measurement. Unseen scene geometry is inferred where viewpoints change.",
+      "inspection": "Visually inspected: recognizable golden grass/path/mound geometry retained. Six creative treatments present. Native atlas cells are square, not requested3:2; UI must use natural cell aspect. Creative-language interpretation is illustrative.",
+      "verifiedDimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "group": "lens",
+      "mode": "built-in image_gen edit",
+      "date": "2026-10-25",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/647955465109369054/",
+      "inputSHA256": "f724bbbea7f35763f98547ddfed848427276065a71420cbdfc9b55deb05cdd94",
+      "credit": "Pinterest reference; original creator not independently verified.",
+      "scene": "An overhanging tree beside a rolling meadow with distant hay bales.",
+      "prompt": "Use the supplied Pinterest photo as the ACTUAL EDIT TARGET, not merely inspiration. Produce ONE photographic comparison texture atlas: EXACT equal grid cells touching edge-to-edge with ZERO gutters, margins, borders, captions, numbers, text overlays or logos. Each cell is a complete LANDSCAPE 3:2 photographic view. High-quality material texture and authentic fine detail, maximum useful output resolution. The ORIGINAL PLACE and original objects must remain unmistakably recognizable in every cell. Keep unmentioned details fixed. Do not invent unrelated architecture, people or subject matter. AI illustration only, not evidence of measured optical properties. EXACT3columns3rows, overall3:2aspect. This is a lens-language illustration using THIS meadow with a large tree on the RIGHT, canopy across the top, near grasses, rolling fields and distant hay bales / treeline. Preserve the recognizable tree form, meadow and warm late-day sunlight. First five cells keep the main tree trunk at approximately similar visible frame height while camera position/distance changes to illustrate lens differences, not merely cropping. Row-majorcell1 35mm natural balanced context;2 24mm closer wide view with stronger large foreground grasses and expanded depth;3 85mm farther view with larger visually compressed background fields;4 50mm natural framing;5 135mm much farther with compressed meadow layers and large distant bales/trees;6 orthographic/parallel-projection illustration, spatial layers stay readable without receding scale or converging edges;7 deliberate150degreefisheye illustration with visibly curved horizon and bowed peripheral tree canopy;8and9 repeat35mmbaseline unused. Do not change weather, tree species, color palette or invent people. Clearly recognizable same source meadow, not the coastal fieldstation or a generic landscape.",
+      "outputPath": "dist/assets/examples/lens-atlas.png",
+      "outputSHA256": "455676eda3ef07ee51b35613b7420bb1b5a0d6e4a24d19ad2fd425ea94bd03da",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024,
+        "cellWidth": 512,
+        "cellHeight": 341.3333333333333
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 3
+      },
+      "note": "Reference-derived AI variation; not an optical measurement. Unseen scene geometry is inferred where viewpoints change.",
+      "inspection": "Visually inspected: same overhanging meadow tree, grasses, bales and warm daylight retained. Numeric lens cells show wider or compressed framing, fisheye is visibly curved. These are AI illustrations, not calibrated optical simulations; exact matched subject size and projection cannot be claimed.",
+      "verifiedDimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "group": "angle",
+      "mode": "built-in image_gen edit",
+      "date": "2026-10-25",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/464011567875539429/",
+      "inputSHA256": "4129e372c2f2eaea36ddad64b46d7e3c30bfcb0cc2ad9ce2b310492f6d2ff42e",
+      "credit": "Pinterest reference; original creator not independently verified. Views of unseen geometry are inferred.",
+      "scene": "A weathered concrete wall with a narrow rectangular opening and palm fronds behind it.",
+      "prompt": "Use the supplied Pinterest photo as the ACTUAL EDIT TARGET, not merely inspiration. Produce ONE photographic comparison texture atlas: EXACT equal grid cells touching edge-to-edge with ZERO gutters, margins, borders, captions, numbers, text overlays or logos. Each cell is a complete LANDSCAPE 3:2 photographic view. High-quality material texture and authentic fine detail, maximum useful output resolution. The ORIGINAL PLACE and original objects must remain unmistakably recognizable in every cell. Keep unmentioned details fixed. Do not invent unrelated architecture, people or subject matter. AI illustration only, not evidence of measured optical properties. EXACT3columns3rows overall3:2aspect. Viewpoint illustration of THIS actual weathered off-white concrete wall, its one narrow tall rectangular opening, and green palm fronds immediately behind the opening. Keep the same opening proportions, chipped edges, weathering, concrete construction holes and palms in all variants. Infer only the minimal unseen geometry necessary for new viewpoints; no new building, arch, props, furniture or people. Diffuse natural daylight consistent. Seven active views readingrow-major:1 three-quarter oblique at eye height showing wall thickness;2 verylow lookingup along wall to opening;3 directlyoverhead inferred plan view showing walltop and palmbehind;4 straightfront eye-level matching the reference;5 highoblique lookingdown;6 straightfront with intentional12degreeDutchcameraroll;7 isometricorthographic view of same wall segment and palms parallel edges,8and9 repeatfrontbaseline unused. Full photographed wall environment percell, not isolated miniatures. Keep the familiar narrow opening and palm leaves recognizable; never morph it into a different architectural design.",
+      "outputPath": "dist/assets/examples/angle-atlas.png",
+      "outputSHA256": "e5a6f1017cdf21167235c01f39e0ae24e168a3e7f5269b049083f80c34084d6f",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024,
+        "cellWidth": 512,
+        "cellHeight": 341.3333333333333
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 3
+      },
+      "note": "Reference-derived AI variation; not an optical measurement. Unseen scene geometry is inferred where viewpoints change.",
+      "inspection": "Visually inspected: recognizable concrete wall, rectangular opening, chipped edges and palm leaves retained. Seven viewpoint illustrations present, including inferred overhead/isometric views and Dutch roll. Very thin pale cell seams are visible; no labels or captions.",
+      "verifiedDimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "group": "focus",
+      "mode": "built-in image_gen edit",
+      "date": "2026-10-25",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/789185534742575117/",
+      "inputSHA256": "e571042a548fd3cbd09795bea5534b71cbaa496504bbdf30098a681ed9f40c9c",
+      "credit": "Pinterest reference; original creator not independently verified.",
+      "scene": "Mounded moss and short grass catching warm grazing light.",
+      "prompt": "Use the supplied Pinterest photo as the ACTUAL EDIT TARGET, not merely inspiration. Produce ONE photographic comparison texture atlas: EXACT equal grid cells touching edge-to-edge with ZERO gutters, margins, borders, captions, numbers, text overlays or logos. Each cell is a complete LANDSCAPE 3:2 photographic view. High-quality material texture and authentic fine detail, maximum useful output resolution. The ORIGINAL PLACE and original objects must remain unmistakably recognizable in every cell. Keep unmentioned details fixed. Do not invent unrelated architecture, people or subject matter. AI illustration only, not evidence of measured optical properties. EXACT2columns2rows overall3:2aspect. Focus illustration of THIS close landscape of irregular dense green mossy grass humps with warm grazing sunlight and deep soft shadows. Choose the central rounded moss hump as focal subject and keep its exact position, neighboring hump arrangement, crop/camera, light and palette the same in all four cells. Reframe source to an identical landscape3:2view, not a different scene. Top left balanced focus: central hump crisp, useful near/far texture still reads. Top right shallowfocus: central hump crisp but near bottom grasses and distant upper humps strongly optically defocused. Bottom left deepfocus: fine grass/moss fibers near-to-far all sharp and detailed. Bottom right miniature-style narrow focus band through the central hump with strong blur above/below (illustrative effect, not a real tilted lens claim). No seedheads, flowers, people, trees, stones or objects added. The SAME original moss humps should be recognizable in each cell.",
+      "outputPath": "dist/assets/examples/focus-atlas.png",
+      "outputSHA256": "a88e5ac41aaec2fc335301911136f9dc356208c5253ca0d2d4579f50cf962c84",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024,
+        "cellWidth": 768,
+        "cellHeight": 512
+      },
+      "grid": {
+        "columns": 2,
+        "rows": 2
+      },
+      "note": "Reference-derived AI variation; not an optical measurement. Unseen scene geometry is inferred where viewpoints change.",
+      "inspection": "Visually inspected: moss/grass humps retained without invented seedhead. Balanced, shallow, deep and narrow-band blur treatments are distinct. Same close vegetation reference, AI illustration rather than lens measurement.",
+      "verifiedDimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "group": "composition",
+      "mode": "built-in image_gen edit",
+      "date": "2026-10-25",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/462393086767035895/",
+      "inputSHA256": "d6a8c624927acda51272a53125fbb461991772c68c993739018199271b87e331",
+      "credit": "Pin identifies The Green Knight (2021); original screenshot creator not independently verified.",
+      "prompt": "Use the supplied image as the ACTUAL EDIT TARGET and scene authority. Make one comparison raster atlas for a creative-direction website. High quality photographic output. Strict uniform grid with equal-sized cells touching edge-to-edge; ZERO gutters, borders, margins, labels, numbers, captions or UI. Every cell is a complete LANDSCAPE 3:2 image. Preserve the original image's recognizable scene, objects, geometry, subject identity and atmospheric photographic quality. Do not invent an unrelated scene. Do not turn it into stock photography or abstract shapes. The unchanged reference context must remain recognizable in every cell. These are AI illustrations, not optical measurements. Exact 2 columns by 2 rows. Overall landscape 3:2 aspect. Edit THIS dark overgrown forest passage with the seated ochre-cloaked figure and warm golden opening. Keep the same seated figure, dense ivy and moss, warm backlight and dark forest. Change ONLY COMPOSITION / framing in four cells, reading row-major. Top left: rule-of-thirds balance, seated figure near left lower third, forest opening acts as counterweight. Top right: deliberate central symmetry, figure centered beneath the golden opening. Bottom left: generous negative space, figure small near far right edge with quiet dark forest taking most of the left. Bottom right: frame within a frame, close dark leafy foreground branches form an opening around the still-readable seated figure; do not obscure the figure. Do not add a standing hiker, backpack, new building, changed costume or extra people. Preserve the reference's filmic lighting and material palette. Each cell same scene, different framing only.",
+      "outputPath": "dist/assets/examples/composition-atlas.png",
+      "grid": {
+        "columns": 2,
+        "rows": 2
+      },
+      "note": "Reference-derived AI variations; not an actual camera or material measurement.",
+      "outputSHA256": "2ee021b8d3b7dbb123e1f11d078235a9ab0d6229b2e2221fbff9be9425b70760",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024,
+        "cellWidth": 768.0,
+        "cellHeight": 512.0
+      },
+      "inspection": "Output visually inspected: reference scene retained; expected variants present; no atlas captions or gutters. AI variation, not measured physical simulation.",
+      "verifiedDimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "group": "lighting",
+      "pin": "https://www.pinterest.com/pin/527765650101799752/",
+      "credit": "Pinterest pin on photography; original photographer unverified",
+      "cols": 3,
+      "rows": 2,
+      "prompt": "Use case: lighting-weather / reference-preserving edit. Input image 1 is the ACTUAL Pinterest photograph and must be the edit target, not merely a vague mood reference. Derive every cell from this exact photograph and retain its recognizable scene identity, layout, camera angle, object locations, materials and textures except the selected controlled change. Create one photographic atlas of equal landscape 3:2 cells, edge-to-edge, ZERO gutters, ZERO borders, ZERO margins, no words, numbers, labels, captions, UI, logos or watermark. High quality faithful photographic variations, not new unrelated scenes, not illustrations of generic shapes. Infer only modest missing peripheral image area when expanding the vertical input to a landscape composition; keep the original photographed subject unmistakable. Exact grid THREE columns TWO rows. Output overall wide aspect9:4, each cell3:2. Scene MUST stay the photographed caf\u00e9 window: black metal frame, condensation/fogged glass, THREE pendant lamps across the top, blurred seated patron below, small plant at left, table/bench shadows outside. Keep this same camera and every object fixed in all6cells. Read left-to-right, top-to-bottom:1 SOFT directional light, a broad soft side source and gently glowing practical lamps with fine condensation gradients;2 low GOLDEN light, warm late-day shaft across glass and long warm/cool separation;3 motivated NEON illumination, practical cyan/red glow as in the original, preserve localized luminous sources rather than globally tinting all glass;4 HARD graphic illumination, a small sharply directional external source casts decisive frame shadows while preserving interior subject;5 OVERCAST open-sky softness, neutral broad diffuse daylight, low contrast but readable silhouettes;6 BACKLIGHT, luminous light behind the blurred seated patron, glowing condensation and edges, readable foreground dark window-frame. Preserve the original intentionally soft patron and exact three-lamp arrangement; do not invent faces, a barn, forest or extra figures. Remove original illegible sign writing rather than adding text.",
+      "mode": "Built-in image_gen reference-preserving edit",
+      "referencePassedVia": "referenced_image_paths",
+      "inputSha256": "1c73333c8b8240713dcd5aa1ae06657afdc9f777f81d30848018bd2566e7b1e6",
+      "outputSha256": "a41ead86fc3240852daee10d3605acb387f162796f91f833b7c834d96c85e6a1",
+      "width": 1881,
+      "height": 836,
+      "cellWidth": 627.0,
+      "cellHeight": 418.0,
+      "status": "generated and installed; visual inspection pending",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/527765650101799752/",
+      "inputSHA256": "1c73333c8b8240713dcd5aa1ae06657afdc9f777f81d30848018bd2566e7b1e6",
+      "outputPath": "dist/assets/examples/lighting-atlas.png",
+      "outputSHA256": "a41ead86fc3240852daee10d3605acb387f162796f91f833b7c834d96c85e6a1",
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "inspection": "Parent visually inspected the generated atlas: source scene retained and expected variants visible.",
+      "verifiedDimensions": {
+        "width": 1881,
+        "height": 836
+      }
+    },
+    {
+      "group": "atmosphere",
+      "pin": "https://www.pinterest.com/pin/95490454611031640/",
+      "credit": "Pinterest pin saved by chen; original photographer unverified",
+      "cols": 2,
+      "rows": 2,
+      "prompt": "Use case: lighting-weather / reference-preserving edit. Input image 1 is the ACTUAL Pinterest photograph and must be the edit target, not merely a vague mood reference. Derive every cell from this exact photograph and retain its recognizable scene identity, layout, camera angle, object locations, materials and textures except the selected controlled change. Create one photographic atlas of equal landscape 3:2 cells, edge-to-edge, ZERO gutters, ZERO borders, ZERO margins, no words, numbers, labels, captions, UI, logos or watermark. High quality faithful photographic variations, not new unrelated scenes, not illustrations of generic shapes. Infer only modest missing peripheral image area when expanding the vertical input to a landscape composition; keep the original photographed subject unmistakable. Exact grid TWO columns TWO rows, output overall aspect3:2, each cell3:2. Scene MUST remain the actual photographed tufted GREEN grassy ridge: one small person in a dark coat at the same center-left location and same pose, the solitary conifer tree to their right, rolling hummocks at foreground and descending slope. SAME camera, crop, daylight direction, person, grass clumps, tree and terrain in all4cells. Change only AIR/atmosphere. Top-left1 CLEAR: remove mist, preserve the same slope, reveal coherent distant tree/ridge depth without buildings, crisp air; top-right2 HAZE: delicate light haze only in distance, crisp foreground grass/person; bottom-left3 FOG: the original thick pale drifting low cloud, layered distant silhouettes readable and same person/grass foreground; bottom-right4 DUST/POLLEN: mostly clear air with sparse tiny sunlit pollen specks in a subtle ray near grass, subordinate and realistic, not stars or magical glitter. Do not replace the scene with lake, canoe, cabin, or mountains that dominate the original terrain. Do not change the person's scale or crop.",
+      "mode": "Built-in image_gen reference-preserving edit",
+      "referencePassedVia": "referenced_image_paths",
+      "inputSha256": "c203cba17e467455bfacf1cdc09a237167cc4d1820f598d1e26cff1068b1c751",
+      "outputSha256": "c35e4ccaefa3bf5582bbce005a8ca12debc3bd2764438de5cbd145ce92b53f86",
+      "width": 1536,
+      "height": 1024,
+      "cellWidth": 768.0,
+      "cellHeight": 512.0,
+      "status": "generated and installed; visual inspection pending",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/95490454611031640/",
+      "inputSHA256": "c203cba17e467455bfacf1cdc09a237167cc4d1820f598d1e26cff1068b1c751",
+      "outputPath": "dist/assets/examples/atmosphere-atlas.png",
+      "outputSHA256": "c35e4ccaefa3bf5582bbce005a8ca12debc3bd2764438de5cbd145ce92b53f86",
+      "grid": {
+        "columns": 2,
+        "rows": 2
+      },
+      "inspection": "Parent visually inspected the generated atlas: source scene retained and expected variants visible.",
+      "verifiedDimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "group": "palette",
+      "pin": "https://www.pinterest.com/pin/562527809706516884/",
+      "credit": "Pinterest pin on Love style; original photographer unverified",
+      "cols": 3,
+      "rows": 2,
+      "prompt": "Use case: lighting-weather / reference-preserving edit. Input image 1 is the ACTUAL Pinterest photograph and must be the edit target, not merely a vague mood reference. Derive every cell from this exact photograph and retain its recognizable scene identity, layout, camera angle, object locations, materials and textures except the selected controlled change. Create one photographic atlas of equal landscape 3:2 cells, edge-to-edge, ZERO gutters, ZERO borders, ZERO margins, no words, numbers, labels, captions, UI, logos or watermark. High quality faithful photographic variations, not new unrelated scenes, not illustrations of generic shapes. Infer only modest missing peripheral image area when expanding the vertical input to a landscape composition; keep the original photographed subject unmistakable. Use case: precise-object-edit / color relationships. Exact grid THREE columns TWO rows, overall wide aspect9:4, every cell3:2. Actual photographed subject is the sculptural exterior STUCCO STAIR architecture: blue-shadowed tall wall at left, pale peach stepped parapet rising diagonally center-right, pink wall at right, crisp triangular hard sunlight shadows, small distant trees against muted sky. Preserve this EXACT wall/step geometry, all step counts and silhouettes, camera angle, stucco texture and sunlight/shadow shape identically in all6cells; change ONLY the surface-color roles and associated physically plausible reflected color. Do not apply a single global tint. Read row-major:1 MOSS and ROSE: restrained moss-green primary stucco with dusty rose stepped parapet and warm neutral support;2 CYAN and EMBER: muted cool cyan/teal wall and controlled warm ember accent on parapet;3 BUTTER and COBALT: pale butter-yellow stucco field with decisive cobalt-blue stepped accent and clean dark anchors;4 PLUM and LIME: dark restrained plum walls, controlled small lime parapet accent, quiet intermediate neutrals;5 MONOCHROME and RED: clear grayscale/value architectural structure with ONE restrained red stepped wall accent;6 SAND and ULTRAMARINE: warm mineral sand stucco and concentrated ultramarine parapet. Keep sky and sunlight neutral; preserve material identity, no new people, signs, props or buildings.",
+      "mode": "Built-in image_gen reference-preserving edit",
+      "referencePassedVia": "referenced_image_paths",
+      "inputSha256": "e2cc508ec3c81b7174e867f397859b73fff4161621bb722dc3495525b7aac9fa",
+      "outputSha256": "41f3fb4912aa1debd3a2554be8ae79550e5c50c1cb0a134927901e731dfb598d",
+      "width": 1881,
+      "height": 836,
+      "cellWidth": 627.0,
+      "cellHeight": 418.0,
+      "status": "generated and installed; visual inspection pending",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/562527809706516884/",
+      "inputSHA256": "e2cc508ec3c81b7174e867f397859b73fff4161621bb722dc3495525b7aac9fa",
+      "outputPath": "dist/assets/examples/palette-atlas.png",
+      "outputSHA256": "41f3fb4912aa1debd3a2554be8ae79550e5c50c1cb0a134927901e731dfb598d",
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "inspection": "Parent visually inspected the generated atlas: source scene retained and expected variants visible.",
+      "verifiedDimensions": {
+        "width": 1881,
+        "height": 836
+      }
+    },
+    {
+      "group": "material",
+      "mode": "built-in image_gen edit",
+      "date": "2026-10-25",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/740490363779933934/",
+      "inputSHA256": "511a80441fd895a1de2ac2b98169292e1fbd4c686a5be221482e65a932461d38",
+      "credit": "Saved by Mahnaz / nst_mahnaz; original photographer not stated on inspected pin.",
+      "prompt": "Use the supplied image as the ACTUAL EDIT TARGET and scene authority. Make one comparison raster atlas for a creative-direction website. High quality photographic output. Strict uniform grid with equal-sized cells touching edge-to-edge; ZERO gutters, borders, margins, labels, numbers, captions or UI. Every cell is a complete LANDSCAPE 3:2 image. Preserve the original image's recognizable scene, objects, geometry, subject identity and atmospheric photographic quality. Do not invent an unrelated scene. Do not turn it into stock photography or abstract shapes. The unchanged reference context must remain recognizable in every cell. These are AI illustrations, not optical measurements. Exact 3 columns by 2 rows, overall wide landscape 9:4 aspect. Edit THIS close view of angular concrete steps with a little triangular cluster of fresh green leaves growing between them. Preserve the geometry and arrangement of the steps, the central triangular opening, the green plant, soft neutral daylight, and camera position in ALL six cells. Reframe to a clear 3:2 landscape crop retaining the plant and surrounding step faces; use the IDENTICAL crop in every cell. Change ONLY the hard step material, NEVER the plant or lighting. Reading row-major: (1) original credible fine-grained grey concrete/stone, physically believable PBR appearance; (2) matte terracotta clay with tactile slight unevenness; (3) polished stainless steel with readable environmental reflections; (4) thick translucent/transparent architectural glass with visibly solid edges, transmission and refraction; (5) organic natural wood with coherent grain and growth rings on the step faces; (6) weathered muted painted concrete with paint worn only along contact edges, revealing original stone beneath, restrained localized wear, not global grime. Do not change the plant into a different plant or add flowers. Keep all six clearly the exact same observed step-and-plant scene.",
+      "outputPath": "dist/assets/examples/material-atlas.png",
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "note": "Reference-derived AI variations; not an actual camera or material measurement.",
+      "outputSHA256": "6279dcafed7e1a80a8ebe8f0e2e41b936d941ddf780bae400ccf729f0eba4133",
+      "dimensions": {
+        "width": 1881,
+        "height": 836,
+        "cellWidth": 627.0,
+        "cellHeight": 418.0
+      },
+      "inspection": "Output visually inspected: reference scene retained; expected variants present; no atlas captions or gutters. AI variation, not measured physical simulation.",
+      "verifiedDimensions": {
+        "width": 1881,
+        "height": 836
+      }
+    },
+    {
+      "group": "finish",
+      "mode": "built-in image_gen edit",
+      "date": "2026-10-25",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/511088257712109819/",
+      "inputSHA256": "ea03aaf92966abba9c86a715d092c493ec2cd9b8c6f5bfff9e170b8ef07b8447",
+      "credit": "Pin titled liamwong, saved by Awen Bree; original artist link not shown on inspected pin.",
+      "prompt": "Use the supplied image as the ACTUAL EDIT TARGET and scene authority. Make one comparison raster atlas for a creative-direction website. High quality photographic output. Strict uniform grid with equal-sized cells touching edge-to-edge; ZERO gutters, borders, margins, labels, numbers, captions or UI. Every cell is a complete LANDSCAPE 3:2 image. Preserve the original image's recognizable scene, objects, geometry, subject identity and atmospheric photographic quality. Do not invent an unrelated scene. Do not turn it into stock photography or abstract shapes. The unchanged reference context must remain recognizable in every cell. These are AI illustrations, not optical measurements. Exact 2 columns by 2 rows, overall landscape 3:2 aspect. This is a FINISH comparison of the supplied rainy Japanese street image: same silhouetted person under black umbrella on the right, black taxi on the left, cyan shop lights, restrained red taillight reflections on wet asphalt, rain and deep background. Use the same landscape 3:2 crop or subtle side extension in all four cells, keeping both umbrella-person and taxi visible. CRITICAL: the scene and image must match exactly in all cells; do not change object positions, camera, characters, light colors, buildings or signage. Change only post-production finish. Reading row-major: top left clean photographic color with restrained contrast and no extra lens effects; top right the exact same image with delicate fine film grain and gentle highlight rolloff (not dirty, not heavy damage); bottom left the same image with subtle thresholded bloom on the bright shop highlights only, keep subject edges/local contrast and dark areas clear; bottom right clean grayscale diagnostic value view of that exact image, no colored pixels or glow. Preserve existing incidental signage as in the source; add no new text, captions or watermark.",
+      "outputPath": "dist/assets/examples/finish-atlas.png",
+      "grid": {
+        "columns": 2,
+        "rows": 2
+      },
+      "note": "Reference-derived AI variations; not an actual camera or material measurement.",
+      "outputSHA256": "d80b621458011b04032294251621f7fd2375d139b49c542df9eefba9a8caee92",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024,
+        "cellWidth": 768.0,
+        "cellHeight": 512.0
+      },
+      "inspection": "Output visually inspected: reference scene retained; expected variants present; no atlas captions or gutters. AI variation, not measured physical simulation.",
+      "verifiedDimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "group": "detail",
+      "pin": "https://www.pinterest.com/pin/535928424430447759/",
+      "credit": "Pinterest pin on exterior details; original photographer unverified",
+      "cols": 3,
+      "rows": 1,
+      "prompt": "Use case: lighting-weather / reference-preserving edit. Input image 1 is the ACTUAL Pinterest photograph and must be the edit target, not merely a vague mood reference. Derive every cell from this exact photograph and retain its recognizable scene identity, layout, camera angle, object locations, materials and textures except the selected controlled change. Create one photographic atlas of equal landscape 3:2 cells, edge-to-edge, ZERO gutters, ZERO borders, ZERO margins, no words, numbers, labels, captions, UI, logos or watermark. High quality faithful photographic variations, not new unrelated scenes, not illustrations of generic shapes. Infer only modest missing peripheral image area when expanding the vertical input to a landscape composition; keep the original photographed subject unmistakable. Use case: precise-object-edit / detail density. Exact grid THREE columns ONE row, overall very wide aspect9:2; each cell3:2 landscape. Scene MUST remain the exact overhead-oblique photograph of a curved dark grey CONCRETE PATH edging around an inset of tall fine GREEN GRASS and a strip of small WHITE/PALE PEBBLES. Preserve exact curved concrete edge, seam locations, material colors, path shape, camera angle, natural light/shadow and inset placement across all3cells. Change ONLY supporting vegetation/pebble micro-detail density, not the large curve or composition. Left1 SPARSE: fewer widely separated grass clumps and fewer pebbles with calm visible substrate, simplified fine detail yet still real; middle2 BALANCED: close to original, coherent tufts of fine blades with readable resting space and localized pebble strip; right3 INTRICATE: rich clearly resolved thin blades/seedheads and varied small pebbles localized in the same inset, subtle fine surface texture, maintain legible clean curved concrete silhouette. No buildings, forest log, benches, flowers or new props; do not fill the walkway with random debris. Photographic, restrained, sharp natural texture.",
+      "mode": "Built-in image_gen reference-preserving edit",
+      "referencePassedVia": "referenced_image_paths",
+      "inputSha256": "6e36f0534af93284f6b447aeea82be352ea980613478c7c2944675eefac95ea9",
+      "outputSha256": "4d15c2d2c2b2530c50c1937f81b962a8af9c08ec7a63033e3defbb4a53354e27",
+      "width": 1536,
+      "height": 1024,
+      "cellWidth": 512.0,
+      "cellHeight": 1024.0,
+      "status": "generated and installed; visual inspection pending",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/535928424430447759/",
+      "inputSHA256": "6e36f0534af93284f6b447aeea82be352ea980613478c7c2944675eefac95ea9",
+      "outputPath": "dist/assets/examples/detail-atlas.png",
+      "outputSHA256": "4d15c2d2c2b2530c50c1937f81b962a8af9c08ec7a63033e3defbb4a53354e27",
+      "grid": {
+        "columns": 3,
+        "rows": 1
+      },
+      "inspection": "Parent visually inspected the generated atlas: source scene retained and expected variants visible.",
+      "verifiedDimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    }
+  ]
+}

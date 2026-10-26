@@ -1,0 +1,93 @@
+{
+  "method": "Built-in image_gen edits using actual Pinterest reference image files",
+  "entries": [
+    {
+      "group": "world",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/416301559310987717/",
+      "inputSHA256": "b9bed1ff4646a310a74cf4cb54836905fd272a6bb573adb709b7fdc02ae1c0c8",
+      "file": "language-atlas.png",
+      "outputSHA256": "b3664f2cc34036416fb1ee6a45646579cd6a6d811c5597ebad55edf9235b0428"
+    },
+    {
+      "group": "lens",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/647955465109369054/",
+      "inputSHA256": "f724bbbea7f35763f98547ddfed848427276065a71420cbdfc9b55deb05cdd94",
+      "file": "lens-atlas.png",
+      "outputSHA256": "455676eda3ef07ee51b35613b7420bb1b5a0d6e4a24d19ad2fd425ea94bd03da"
+    },
+    {
+      "group": "angle",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/464011567875539429/",
+      "inputSHA256": "4129e372c2f2eaea36ddad64b46d7e3c30bfcb0cc2ad9ce2b310492f6d2ff42e",
+      "file": "angle-atlas.png",
+      "outputSHA256": "e5a6f1017cdf21167235c01f39e0ae24e168a3e7f5269b049083f80c34084d6f"
+    },
+    {
+      "group": "focus",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/789185534742575117/",
+      "inputSHA256": "e571042a548fd3cbd09795bea5534b71cbaa496504bbdf30098a681ed9f40c9c",
+      "file": "focus-atlas.png",
+      "outputSHA256": "a88e5ac41aaec2fc335301911136f9dc356208c5253ca0d2d4579f50cf962c84"
+    },
+    {
+      "group": "composition",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/462393086767035895/",
+      "inputSHA256": "d6a8c624927acda51272a53125fbb461991772c68c993739018199271b87e331",
+      "file": "composition-atlas.png",
+      "outputSHA256": "2ee021b8d3b7dbb123e1f11d078235a9ab0d6229b2e2221fbff9be9425b70760"
+    },
+    {
+      "group": "lighting",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/527765650101799752/",
+      "inputSHA256": "1c73333c8b8240713dcd5aa1ae06657afdc9f777f81d30848018bd2566e7b1e6",
+      "file": "lighting-atlas.png",
+      "outputSHA256": "a41ead86fc3240852daee10d3605acb387f162796f91f833b7c834d96c85e6a1"
+    },
+    {
+      "group": "atmosphere",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/95490454611031640/",
+      "inputSHA256": "c203cba17e467455bfacf1cdc09a237167cc4d1820f598d1e26cff1068b1c751",
+      "file": "atmosphere-atlas.png",
+      "outputSHA256": "c35e4ccaefa3bf5582bbce005a8ca12debc3bd2764438de5cbd145ce92b53f86"
+    },
+    {
+      "group": "palette",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/562527809706516884/",
+      "inputSHA256": "e2cc508ec3c81b7174e867f397859b73fff4161621bb722dc3495525b7aac9fa",
+      "file": "palette-atlas.png",
+      "outputSHA256": "41f3fb4912aa1debd3a2554be8ae79550e5c50c1cb0a134927901e731dfb598d"
+    },
+    {
+      "group": "material",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/740490363779933934/",
+      "inputSHA256": "511a80441fd895a1de2ac2b98169292e1fbd4c686a5be221482e65a932461d38",
+      "file": "material-atlas.png",
+      "outputSHA256": "6279dcafed7e1a80a8ebe8f0e2e41b936d941ddf780bae400ccf729f0eba4133"
+    },
+    {
+      "group": "finish",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/511088257712109819/",
+      "inputSHA256": "ea03aaf92966abba9c86a715d092c493ec2cd9b8c6f5bfff9e170b8ef07b8447",
+      "file": "finish-atlas.png",
+      "outputSHA256": "d80b621458011b04032294251621f7fd2375d139b49c542df9eefba9a8caee92"
+    },
+    {
+      "group": "detail",
+      "actualReferencePassed": true,
+      "inputPin": "https://www.pinterest.com/pin/535928424430447759/",
+      "inputSHA256": "6e36f0534af93284f6b447aeea82be352ea980613478c7c2944675eefac95ea9",
+      "file": "detail-atlas.png",
+      "outputSHA256": "4d15c2d2c2b2530c50c1937f81b962a8af9c08ec7a63033e3defbb4a53354e27"
+    }
+  ]
+}
