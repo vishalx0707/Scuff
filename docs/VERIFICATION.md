@@ -1,15 +1,16 @@
-# Verification — Scuff 0.3.1
+# Verification — Scuff 0.4.0
 
 Checked 26 October 2026 before publication. Browser work stayed headless. No external collaborator or model was invoked.
 
 | Boundary | Result | Coverage |
 | --- | --- | --- |
-| Compiler, local server and stdio MCP | 60 Node tests passed | Effective camera/CTLT semantics, strict import/export, literal user data, actual reference bytes, canonical artifact containment, exclusive job claims, session revisions, Done/Ignore and malformed MCP requests |
+| Compiler, local server, CLI and stdio MCP | 63 Node tests passed | Effective camera/CTLT semantics, strict import/export, literal user data, actual reference bytes, canonical artifact containment, exclusive job claims, session revisions, Done/Ignore, malformed MCP requests, platform storage and CLI dispatch |
 | Blender helper without Blender | 4 Python tests passed | Seed determinism, instance budgets, masks/exclusions and invalid requests |
 | Workspace in Chromium | 121 checks passed | Navigation, choices, example image loading, prompts, saved directions/styles, references, queue/result UI and responsive layout; no runtime errors or external requests |
 | Isolated choice UI | 31 checks passed | Agent seed, autosave, final-keystroke page Done, Ignore, conflicts, manual prompts, recovery and mobile controls |
 | Browser → HTTP store → stdio MCP | 12 checks passed | Scoped conversations, real selections, page Done to a waiting tool, deliberately delayed autosave before chat Done, Ignore without partial settings and no accidental build |
 | Native Blender 5.2.1 LTS | Background smoke passed | Factory-startup inventory, deterministic 70-instance scatter, masks/exclusions, fog nodes, camera copies/markers, rollback and an actual diagnostic render/native file |
+| Packed npm distribution | Installed-package smoke passed | Allowlisted tarball, real npx executable resolution, website assets, stdio MCP and saved choices shared by two different installation paths |
 
 Run `npm test`, `npm run test:python` and `npm run test:browser`. Optional browser dependencies and installation are described in the root README. Outputs stay under the ignored `test-results/` folder. Blender diagnostics run separately with a resolved absolute output path.
 

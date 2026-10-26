@@ -77,7 +77,7 @@ export function createServer({storeRoot}={}){const store=createJobStore(storeRoo
   }catch(error){if(res.destroyed)return;const status=error.status||(error.code==='ENOENT'?404:400);if(res.headersSent){res.destroy();return;}json(res,status,{error:error.code==='ENOENT'?'Not found.':error.message||'Invalid request.'},req.method==='HEAD');}
 });}
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
-  const port=Number(process.env.FIELDWORK_PORT||process.argv[2]||8787);if(!Number.isInteger(port)||port<1024||port>65535)throw new Error('Choose a port from 1024 to 65535.');
+  const port=Number(process.argv[2]||process.env.SCUFF_PORT||process.env.FIELDWORK_PORT||8787);if(!Number.isInteger(port)||port<1024||port>65535)throw new Error('Choose a port from 1024 to 65535.');
   const server=createServer();server.on('error',error=>{console.error(error.code==='EADDRINUSE'?`Port ${port} is in use. Try: node server.mjs ${port+1}`:error.message);process.exitCode=1;});
   server.listen(port,'127.0.0.1',()=>console.log(`Scuff ${version} is ready: http://127.0.0.1:${port}\nQueued work needs a connected agent; no model runs automatically.\nKeep this process running while using the workspace. Press Ctrl+C to stop.`));
 }

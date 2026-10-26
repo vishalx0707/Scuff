@@ -8,6 +8,31 @@ A local workspace and agent plugin for Blender, image generation and video gener
 
 Requires Node.js 20 or newer. The app has no runtime dependencies or API keys.
 
+Run the public npm package:
+
+```sh
+npx --yes @vishalx0707/scuff
+```
+
+Then open **http://127.0.0.1:8787**. Scuff starts only its local server and never opens a browser window automatically. Keep the command running while using the site. The unscoped npm name `scuff` belongs to another project; use the full `@vishalx0707/scuff` name.
+
+For an agent, add this MCP configuration to its settings:
+
+```json
+{
+  "mcpServers": {
+    "scuff": {
+      "command": "npx",
+      "args": ["--yes", "@vishalx0707/scuff", "mcp"]
+    }
+  }
+}
+```
+
+On Windows, use `npx.cmd` if your host cannot resolve `npx`. The MCP command starts the local site when needed, without opening a window or calling a model. The requesting agent offers the returned choice-page URL and waits for Done or Ignore. See [the agent choice loop](skills/plan/references/agent-choice-loop.md).
+
+You can also work from source:
+
 ```sh
 git clone https://github.com/vishalx0707/Scuff.git
 cd Scuff
@@ -53,7 +78,9 @@ See [queued execution](skills/direct/references/queued-execution.md) for the exa
 
 ## Data and evidence
 
-Directions/styles stay in this browser's local storage until exported. Uploaded references, queued directions and registered result copies live in `.fieldwork-local` beside the plugin. Export browser work before clearing storage. Keep `.fieldwork-local` out of shared ZIPs because it can contain private files.
+Directions/styles stay in this browser's local storage until exported. Export browser work before clearing storage. Uploaded references, choices, queued directions and registered result files use stable per-user storage: `%LOCALAPPDATA%/Scuff` on Windows, `~/Library/Application Support/Scuff` on macOS, or `$XDG_DATA_HOME/scuff` (default `~/.local/share/scuff`) on Linux. They stay outside npm's installation/cache, so updates do not remove them. Run `npx --yes @vishalx0707/scuff data` to see the folder.
+
+Set `SCUFF_DATA_DIR` or pass `--store <folder>` to use another location; `FIELDWORK_STORE` remains supported. Existing source checkouts with populated `.fieldwork-local` stores continue using that folder until explicitly moved. Never include either store in shared packages.
 
 The section-based example images remain locally bundled: eleven distinct Pinterest reference photographs fed 57 generated variants. One scene is reused within each section; different sections use different scenes. These are illustrative, not calibrated lens simulations. Sources/prompts/hashes remain in `docs/example-provenance.json` and `docs/EXAMPLES.md`.
 
@@ -76,3 +103,5 @@ On Linux, use `npx playwright install --with-deps chromium` when system dependen
 Software tests cover semantics, import/export, reference bytes, exclusive job claims, choice-session isolation and verified artifact transport. They do not prove artistic quality or a live generator connection. Blender-specific diagnostics can be run separately with `blender --background --factory-startup --python tests/blender-smoke.py -- test-results/blender`. That command creates only its isolated diagnostic scene.
 
 See [the verification record](docs/VERIFICATION.md) for current checks and their limits. GitHub Actions runs the Node, Python and headless browser suites on Windows and Linux.
+
+`npm run test:package` also packs and installs the exact npm tarball, launches its real `npx` command, checks the installed website/MCP and confirms persisted choices survive a second installation path. The published package contains runtime files and documentation; tests, research, private stores, local configuration and caches are excluded.

@@ -25,6 +25,7 @@ jobs:
       - run: npx playwright install chromium
         timeout-minutes: 5
       - run: npm run test:browser
+      - run: npm run test:package
       - uses: actions/upload-artifact@v7
         if: failure()
         with:

@@ -1,7 +1,6 @@
 {
-  "name": "scuff",
-  "version": "0.3.1",
-  "private": true,
+  "name": "@vishalx0707/scuff",
+  "version": "0.4.0",
   "type": "module",
   "description": "Visual creative direction for Blender, images and video, with a local agent choice loop.",
   "scripts": {
@@ -13,16 +12,51 @@
     "mcp": "node agent-mcp.mjs",
     "test:browser": "node tests/verify-browser.mjs",
     "test:python": "python -m unittest discover -s tests -p test_*.py",
-    "test:all": "npm test && npm run test:python && npm run test:browser"
+    "test:all": "npm test && npm run test:python && npm run test:browser",
+    "test:package": "node tests/package-smoke.mjs"
   },
   "engines": {
     "node": ">=20"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vishalx0707/Scuff.git"
+    "url": "git+https://github.com/vishalx0707/Scuff.git"
   },
   "devDependencies": {
     "playwright": "1.62.1"
-  }
+  },
+  "bin": {
+    "scuff": "bin/scuff.mjs"
+  },
+  "files": [
+    "bin/",
+    "*.mjs",
+    "dist/",
+    "skills/",
+    "scripts/blender_scene_tools.py",
+    "docs/",
+    "examples/",
+    "SKILL.md",
+    ".claude-plugin/",
+    ".mcp.json",
+    "mcp-config.example.json",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "author": "Vishal",
+  "homepage": "https://github.com/vishalx0707/Scuff#readme",
+  "bugs": {
+    "url": "https://github.com/vishalx0707/Scuff/issues"
+  },
+  "keywords": [
+    "mcp",
+    "blender",
+    "creative-direction",
+    "image-generation",
+    "video-generation"
+  ]
 }

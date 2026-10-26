@@ -1,0 +1,51 @@
+import assert from 'node:assert/strict';
+import {execFile,spawn} from 'node:child_process';
+import {promisify} from 'node:util';
+import {readFile,mkdir,mkdtemp,cp} from 'node:fs/promises';
+import {createInterface} from 'node:readline';
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
+import {createServer as probeServer} from 'node:net';
+
+const exec=promisify(execFile),root=fileURLToPath(new URL('../',import.meta.url));
+assert.ok(process.env.npm_execpath,'Run this check through npm run test:package.');
+const output=path.join(root,'test-results','npm-release');await mkdir(output,{recursive:true});
+const run=await mkdtemp(path.join(output,'run-')),env={...process.env,SCUFF_DATA_DIR:path.join(run,'user-data'),npm_config_cache:path.join(run,'npm-cache')};
+const npm=(args,options={})=>exec(process.execPath,[process.env.npm_execpath,...args],{cwd:root,env,windowsHide:true,maxBuffer:4*1024*1024,...options});
+const packed=JSON.parse((await npm(['pack','--json','--ignore-scripts','--pack-destination',run])).stdout)[0];
+const names=packed.files.map(file=>file.path),tarball=path.join(run,packed.filename);
+for(const required of ['bin/scuff.mjs','server.mjs','agent-mcp.mjs','storage.mjs','atomic-json.mjs','dist/index.html','dist/assets/examples/lens-atlas.png','skills/plan/SKILL.md','LICENSE'])assert.ok(names.includes(required),required);
+assert.ok(names.every(name=>!/(^|\/)(research|test-results|tests|node_modules|\.fieldwork-local|relocation-checks)(\/|$)/.test(name)&&!name.endsWith('.tgz')&&!name.includes('mcp-config.local')));
+const consumer=path.join(run,'consumer with spaces');
+await npm(['install','--prefix',consumer,'--ignore-scripts','--omit=dev','--no-audit','--no-fund','--package-lock=false',tarball]);
+const installed=path.join(consumer,'node_modules','@vishalx0707','scuff'),cli=path.join(installed,'bin','scuff.mjs');
+const command=(bin,args)=>exec(process.execPath,[bin,...args],{cwd:run,env,windowsHide:true});
+assert.equal((await npm(['exec','--yes','--package='+tarball,'--','scuff','--version'])).stdout.trim(),'0.4.0');
+const direction=path.join(run,'direction.json');await import('node:fs/promises').then(fs=>fs.writeFile(direction,JSON.stringify({schemaVersion:1,medium:'blender',subject:'A stone beside grass',chosenGroups:[]})));
+const created=JSON.parse((await command(cli,['choices','create',direction])).stdout);
+const second=path.join(run,'second cache');await cp(installed,second,{recursive:true});
+const secondCLI=path.join(second,'bin','scuff.mjs');
+assert.equal(JSON.parse((await command(secondCLI,['choices','show',created.id])).stdout).direction.subject,'A stone beside grass');
+assert.equal((await command(secondCLI,['data'])).stdout.trim(),env.SCUFF_DATA_DIR);
+const probe=probeServer();await new Promise(resolve=>probe.listen(0,'127.0.0.1',resolve));const port=probe.address().port;await new Promise(resolve=>probe.close(resolve));
+const server=spawn(process.execPath,[cli,'serve','--port',String(port)],{cwd:run,env,windowsHide:true,stdio:['pipe','pipe','pipe']});
+let stderr='';server.stderr.on('data',b=>stderr+=b);const base='http://127.0.0.1:'+port;
+const child=spawn(process.execPath,[cli,'mcp'],{cwd:run,env:{...env,SCUFF_URL:base,FIELDWORK_AUTOSTART:'0'},windowsHide:true,stdio:['pipe','pipe','pipe']});
+let id=0;const pending=new Map();child.stderr.on('data',b=>stderr+=b);
+createInterface({input:child.stdout}).on('line',line=>{const value=JSON.parse(line),p=pending.get(value.id);if(p){pending.delete(value.id);clearTimeout(p.timer);value.error?p.reject(Error(value.error.message)):p.resolve(value.result);}});
+const rpc=(method,params={})=>new Promise((resolve,reject)=>{const requestId=++id,timer=setTimeout(()=>reject(Error('Packaged MCP timeout.')),10000);pending.set(requestId,{resolve,reject,timer});child.stdin.write(JSON.stringify({jsonrpc:'2.0',id:requestId,method,params})+'\n');});
+try {
+  let healthy=false;for(let attempt=0;attempt<60;attempt++){try{const r=await fetch(base+'/health');if(r.ok){healthy=true;break;}}catch{}await new Promise(resolve=>setTimeout(resolve,50));}assert.ok(healthy,stderr);
+  assert.equal((await(await fetch(base+'/health')).json()).version,'0.4.0');
+  assert.equal((await fetch(base)).status,200);
+  assert.equal((await fetch(base+'/assets/examples/lens-atlas.png')).status,200);
+  const init=await rpc('initialize',{protocolVersion:'2025-11-25',capabilities:{},clientInfo:{name:'packed-package-check',version:'1'}});assert.equal(init.serverInfo.version,'0.4.0');
+  assert.equal((await rpc('tools/list')).tools.length,5);
+  const selected=await rpc('tools/call',{name:'read_choices',arguments:{id:created.id}});assert.equal(selected.structuredContent.direction.subject,'A stone beside grass');
+  assert.equal(stderr,'');
+  console.log(JSON.stringify({ok:true,package:packed.name,version:packed.version,files:names.length,npxLaunch:true,persistentAcrossInstalls:true,site:true,mcp:true,tarball}));
+} finally {
+  child.stdin.end();await new Promise(resolve=>{if(child.exitCode!==null)return resolve();child.once('exit',resolve);});
+  server.kill();await new Promise(resolve=>{if(server.exitCode!==null||server.signalCode!==null)return resolve();server.once('exit',resolve);});
+  for(const value of pending.values())clearTimeout(value.timer);
+}

@@ -2,11 +2,11 @@ import {mkdir,readFile,writeFile,open,unlink,readdir,stat,copyFile,realpath} fro
 import {createReadStream} from 'node:fs';
 import {createHash,randomUUID} from 'node:crypto';
 import path from 'node:path';
-import {fileURLToPath} from 'node:url';
 import * as core from './dist/core.mjs';
 import {saveJSON as save} from './atomic-json.mjs';
+import {dataDirectory} from './storage.mjs';
 
-export const defaultStoreRoot=fileURLToPath(new URL('./.fieldwork-local/',import.meta.url));
+export const defaultStoreRoot=dataDirectory();
 const roles=new Set(['identity','composition','atmosphere','style','audio']);
 const formats={'image/png':['.png',20*1024*1024],'image/jpeg':['.jpg',20*1024*1024],'image/webp':['.webp',20*1024*1024],'image/gif':['.gif',20*1024*1024],'audio/wav':['.wav',40*1024*1024],'audio/x-wav':['.wav',40*1024*1024],'audio/mpeg':['.mp3',40*1024*1024],'audio/ogg':['.ogg',40*1024*1024],'audio/mp4':['.m4a',40*1024*1024]};
 const idPattern=/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;

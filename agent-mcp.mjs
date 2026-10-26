@@ -1,8 +1,10 @@
 // Local stdio MCP adapter. No model calls, browser launch or chat-process injection.
 import {createInterface} from 'node:readline';
 import {createServer} from './server.mjs';
+import {readFile} from 'node:fs/promises';
+const {version}=JSON.parse(await readFile(new URL('./package.json',import.meta.url),'utf8'));
 
-const configured=new URL(process.env.FIELDWORK_URL||'http://127.0.0.1:8787');
+const configured=new URL(process.env.SCUFF_URL||process.env.FIELDWORK_URL||'http://127.0.0.1:8787');
 if(configured.protocol!=='http:'||!['127.0.0.1','localhost'].includes(configured.hostname)||configured.username||configured.password||configured.search||configured.hash||configured.pathname!=='/')throw Error('FIELDWORK_URL must be a plain local HTTP origin.');
 const base=configured.origin;
 let server,ready,initialized=false,clientCapabilities={},nextId=0;
@@ -14,7 +16,7 @@ async function ensureServer(){
  ready=(async()=>{
   try{const response=await fetch(base+'/api/capabilities',{signal:AbortSignal.timeout(1500)});const c=await response.json();if(response.ok&&c.choiceSessions)return;throw Error('The local server does not support choice sessions. Restart the updated server.');}
   catch(error){if(error.message.includes('does not support'))throw error;if(process.env.FIELDWORK_AUTOSTART==='0')throw Error('Start the local Fieldwork server before using the agent tools.');}
-  server=createServer({storeRoot:process.env.FIELDWORK_STORE});await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(Number(configured.port||80),'127.0.0.1',resolve);});
+  server=createServer({storeRoot:process.env.SCUFF_DATA_DIR||process.env.FIELDWORK_STORE});await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(Number(configured.port||80),'127.0.0.1',resolve);});
  })().catch(error=>{ready=null;throw error;});return ready;
 }
 async function api(route,body,signal){await ensureServer();const response=await fetch(base+route,{method:body===undefined?'GET':'POST',headers:body===undefined?{}:{'Content-Type':'application/json','X-Fieldwork-Request':'1'},body:body===undefined?undefined:JSON.stringify(body),signal});const value=await response.json();if(!response.ok)throw Error(value.error||'Local choice request failed.');return value;}
@@ -97,7 +99,7 @@ async function handle(message){
  if(message.id===undefined)return;
  const id=message.id,reply=value=>emit({jsonrpc:'2.0',id,result:value}),error=(code,text)=>emit({jsonrpc:'2.0',id,error:{code,message:text}});
  try{
-  if(message.method==='initialize'){if(initialized){error(-32600,'Already initialized.');return;}initialized=true;clientCapabilities=message.params?.capabilities||{};const offered=message.params?.protocolVersion;reply({protocolVersion:['2024-11-05','2025-03-26','2025-06-18','2025-11-25'].includes(offered)?offered:'2025-11-25',capabilities:{tools:{}},serverInfo:{name:'fieldwork-choices',version:'0.3.1'},instructions:'Start a scoped choice session, make its URL available, ask Done/Ignore and wait/read the final snapshot. No browser launches or model calls occur in this server.'});return;}
+  if(message.method==='initialize'){if(initialized){error(-32600,'Already initialized.');return;}initialized=true;clientCapabilities=message.params?.capabilities||{};const offered=message.params?.protocolVersion;reply({protocolVersion:['2024-11-05','2025-03-26','2025-06-18','2025-11-25'].includes(offered)?offered:'2025-11-25',capabilities:{tools:{}},serverInfo:{name:'fieldwork-choices',version},instructions:'Start a scoped choice session, make its URL available, ask Done/Ignore and wait/read the final snapshot. No browser launches or model calls occur in this server.'});return;}
   if(!initialized){error(-32002,'Initialize first.');return;}
   if(message.method==='ping'){reply({});return;}
   if(message.method==='tools/list'){reply({tools});return;}
